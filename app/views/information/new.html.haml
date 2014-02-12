@@ -1,0 +1,12 @@
+%h3 Record Information
+= simple_form_for(@information,url: appointment_information_path(@appointment)) do |f|
+  = f.input :name_of_pet
+  = f.input :type_of_pet ,collection: %w[dog cat bird]
+  = f.input :breed
+  = f.input :age
+  = f.input :weight
+  = f.input :date_of_last_visit ,as: :date
+  = f.hidden_field :appointment_id
+  = f.hidden_field :doctor_id  , value: current_user.id
+
+  = f.button :submit

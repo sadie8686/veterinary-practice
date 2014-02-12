@@ -1,0 +1,35 @@
+%h3 List of Appointments
+
+- unless @users.blank?
+  %table{class: "table table-striped table-bordered table-condensed"}
+    %thead
+      %tr
+        %th #
+        %th Name
+        %th Role
+        %th Address
+        %th City
+        %th State
+        %th Zip
+        %th Years in practice
+    %tbody
+      - count = 1
+      - @users.each do |user|
+        %tr
+          %td= count
+          %td= user.name
+          %td= user.role
+          %td= user.address
+          %td= user.city
+          %td= user.state
+          %td= user.zip
+          %td= user.zip
+          %td= user.years_in_practice
+          %td
+            = link_to 'Edit' ,edit_user_path(user)  if can? :update, user
+            = link_to 'Delete' ,user,method: :delete,data: {confirm: 'Sure?'}  if can? :destroy, user
+        - count += 1
+
+- if can? :create, Appointment
+  = link_to 'Create new User' , new_user_path
+

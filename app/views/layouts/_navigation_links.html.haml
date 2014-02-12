@@ -1,0 +1,8 @@
+%li= link_to 'About', '#'
+- if user_signed_in?
+  %li= link_to "Appointments", appointments_path  if can? :read,Appointment
+  %li= link_to "Users/Doctors", users_path  if can? :read,User
+  %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+- else
+  %li= link_to "Sign in", new_user_session_path
+  %li/

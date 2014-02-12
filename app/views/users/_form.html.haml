@@ -1,0 +1,13 @@
+= simple_form_for(@user, html: {action: 'create', class: 'form-horizontal' }) do |f|
+  = f.input :role ,collection: User::ROLES
+  = f.input :name
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  = f.input :address
+  = f.input :city
+  = f.input :state
+  = f.input :zip
+  = f.input :school_received_degree_form
+  = f.input :years_in_practice
+  = f.button :submit

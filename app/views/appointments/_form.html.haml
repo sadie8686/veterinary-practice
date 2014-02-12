@@ -1,0 +1,10 @@
+= simple_form_for(@appointment, html: { class: 'form-horizontal' }) do |f|
+  = f.association :doctor, collection: User.doctors, prompt: "Choose Doctor"
+  = f.input :date_of_visit, as: :date
+  = f.input :pet
+  = f.input :customer
+  = f.input :reminder_of_appointment, as: :boolean, checked_value: true, unchecked_value: false
+  = f.input :reason_for_visit ,as: :text
+  = f.hidden_field :receptionist_id, value: current_user.id
+
+  = f.button :submit
